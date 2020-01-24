@@ -21,7 +21,7 @@ type Stock struct {
 
 func main() {
 
-	tickers := []string{"AMD","ADI","AAPL","BMRN"}
+	tickers := getTickers()
 
 	for _, ticker := range tickers {
 
