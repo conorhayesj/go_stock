@@ -22,7 +22,7 @@ type Stock struct {
 func main() {
 
 	tickers := getTickers()
-
+	addTicker("dsjkf")
 	for _, ticker := range tickers {
 
 		stockUrl := url + ticker

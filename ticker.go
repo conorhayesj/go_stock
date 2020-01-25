@@ -4,6 +4,7 @@ import (
 	"os"
 	"bufio"
 	"log"
+	"fmt"
 )
 
 func getTickers() (tickers[]string) {
@@ -21,3 +22,24 @@ func getTickers() (tickers[]string) {
 	return tickers
 }
 
+func addTicker(ticker string) {
+
+	tickers := getTickers()
+	for _, b := range tickers {
+		if b == ticker {
+			fmt.Println(ticker, " is already entered")
+			break
+		}
+	}
+
+	f, err := os.OpenFile("tickers", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		log.Fatal(err)
+	}
+	_, err = f.WriteString(ticker)
+	if err != nil {
+		log.Fatal(err)
+	}
+	f.Sync()
+
+}
